@@ -12,3 +12,56 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Company {
+  id    String @id @default(uuid()) @db.Uuid
+  name  String
+  email String @unique
+  cnpj  String @unique
+
+  veterinarians Veterinarian[]
+  customers     Customer[]
+
+  @@map("companies")
+}
+
+model Veterinarian {
+  id        String @id @default(uuid()) @db.Uuid
+  email     String @unique
+  name      String
+  phone     String
+  crmv      String
+  companyId String @map("company_id") @db.Uuid
+
+  companies Company @relation(fields: [companyId], references: [id])
+
+  @@map("veterinarians")
+}
+
+model Customer {
+  id        String @id @default(uuid()) @db.Uuid
+  email     String @unique
+  name      String
+  phone     String
+  companyId String @map("company_id") @db.Uuid
+  addressId String @map("address_id") @db.Uuid
+
+  companies Company @relation(fields: [companyId], references: [id])
+  addresses Address @relation(fields: [addressId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("customers")
+}
+
+model Address {
+  id          String @id @default(uuid()) @db.Uuid
+  farmName    String @unique @map("farm_name")
+  postalCode  String @map("postal_code")
+  highwayCOde String @map("highway_code")
+  city        String
+  state       String
+  observation String
+
+  customers Customer[]
+
+  @@map("addresses")
+}
