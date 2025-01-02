@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { ICreateCompanyInput } from './companies.entities';
+import { ICreateCompanyInput } from './companies.entity';
 import { companiesService } from './companies.service';
 
 class CompaniesController {

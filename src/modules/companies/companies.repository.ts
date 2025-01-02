@@ -2,7 +2,7 @@ import {
   ICompaniesRepository,
   ICompany,
   ICreateCompanyInput,
-} from './companies.entities';
+} from './companies.entity';
 import { primsaClient } from '@/lib/prisma';
 
 class CompaniesRepository implements ICompaniesRepository {

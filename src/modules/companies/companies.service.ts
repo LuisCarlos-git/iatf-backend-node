@@ -1,4 +1,4 @@
-import { ICreateCompanyInput } from './companies.entities';
+import { ICreateCompanyInput } from './companies.entity';
 import { companiesRepository } from './companies.repository';
 
 export class CompaniesService {
