@@ -1,4 +1,5 @@
 import { ICreateCompanyInput } from './companies.entity';
+import { CompanyAlreadyExistsError } from './companies.error';
 import { companiesRepository } from './companies.repository';
 
 export class CompaniesService {
@@ -7,7 +8,7 @@ export class CompaniesService {
     const companyExists = await companiesRepository.findByCnpj(cnpj);
 
     if (companyExists) {
-      throw new Error('Company already exists');
+      throw new CompanyAlreadyExistsError();
     }
 
     await companiesRepository.create({
