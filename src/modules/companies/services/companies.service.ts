@@ -1,6 +1,6 @@
-import { ICreateCompanyInput } from './companies.entity';
-import { CompanyAlreadyExistsError } from './companies.error';
-import { companiesRepository } from './companies.repository';
+import { ICreateCompanyInput } from '../entities/companies.entity';
+import { CompanyAlreadyExistsError } from '../errors/companies.error';
+import { companiesRepository } from '../repositories/companies.repository';
 
 export class CompaniesService {
   async createCompany(params: ICreateCompanyInput) {

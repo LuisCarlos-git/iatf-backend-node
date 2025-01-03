@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { ICreateCompanyInput } from './companies.entity';
-import { companiesService } from './companies.service';
-import { CompanyAlreadyExistsError } from './companies.error';
+import { ICreateCompanyInput } from '../entities/companies.entity';
+import { companiesService } from '../services/companies.service';
+import { CompanyAlreadyExistsError } from '../errors/companies.error';
 
 class CompaniesController {
   async create(

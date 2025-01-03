@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify';
-import { companiesController } from './companies.controller';
-import { createCompanySchema } from './companies.schema';
+import { companiesController } from '../controllers/companies.controller';
+import { createCompanySchema } from '../schemas/companies.schema';
 
 class CompaniesRoutes {
   initializer(router: FastifyInstance) {
